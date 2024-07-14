@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-mongoose.connect('mongodb+srv://abdi:abdi@cluster0.8y7a2c4.mongodb.net/mydatabase?retryWrites=true&w=majority')
+mongoose.connect('mongodb://abdi:abdi@ac-vodhc71-shard-00-00.8y7a2c4.mongodb.net:27017,ac-vodhc71-shard-00-01.8y7a2c4.mongodb.net:27017,ac-vodhc71-shard-00-02.8y7a2c4.mongodb.net:27017/?ssl=true&replicaSet=atlas-10rfpx-shard-0&authSource=admin&retryWrites=true&w=majority&appName=Cluster0')
     .then(() => {
         console.log('Connected to MongoDB');
     })
