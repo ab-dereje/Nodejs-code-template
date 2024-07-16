@@ -4,6 +4,7 @@ const config = require("./src/config/config")
 const app = express();
 const { errorHandler, errorConverter } = require('./src/middlewares/error');
 const ApiError = require('./src/utils/ApiError');
+const blogRouter = require('./src/routes/blog.route');
 const httpStatus = require('http-status');
 
 // const port = process.env.PORT || 3000;
@@ -16,6 +17,8 @@ const httpStatus = require('http-status');
 //         console.error('Error connecting to MongoDB', err);
 //     });
 
+app.use(express.json());
+
 mongoose
     .connect(config.dbConnection)
     .then(() => {
@@ -24,6 +27,9 @@ mongoose
     .catch((err) => {
         console.error(err);
     });
+const blog = require('./src/models/blog.model')
+
+app.use(blogRouter);
 
 // Example route
 app.get('/', (req, res) => {
