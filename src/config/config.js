@@ -25,4 +25,6 @@ if (error) {
 module.exports = {
     port: envVars.PORT,
     dbConnection: envVars.DB_CONNECTION,
+    access_token_secret: envVars.ACCESS_TOKEN_SECRET,
+    refresh_token_secret: envVars.REFRESH_TOKEN_SECRET,
 };
