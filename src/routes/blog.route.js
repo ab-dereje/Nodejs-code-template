@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { createBlogSchema } = require('./../validations/blog.validation');
+const { blogValidation } = require('./../validations');
 const validate = require('./../middlewares/validate');
-const { createBlog, getBlogs } = require('./../controllers/blog.controller');
-router.get('/blogs', getBlogs);
-router.post('/blog', validate(createBlogSchema), createBlog);
+const { blogController } = require('./../controllers');
+const { authenticateToken } = require('../middlewares/authMiddleware');
+
+router.get('/blogs', authenticateToken, blogController.getBlogs);
+router.post('/blog', authenticateToken, validate(blogValidation.createBlogSchema), blogController.createBlog);
 
 module.exports = router;

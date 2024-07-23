@@ -5,6 +5,7 @@ const app = express();
 const { errorHandler, errorConverter } = require('./src/middlewares/error');
 const ApiError = require('./src/utils/ApiError');
 const blogRouter = require('./src/routes/blog.route');
+const authRouter = require('./src/routes/auth.route');
 const httpStatus = require('http-status');
 
 // const port = process.env.PORT || 3000;
@@ -30,6 +31,7 @@ mongoose
 const blog = require('./src/models/blog.model')
 
 app.use(blogRouter);
+app.use('/auth', authRouter);
 
 // Example route
 app.get('/', (req, res) => {
